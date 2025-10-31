@@ -9,13 +9,13 @@ builder.Services.AddDbContext<PetAdoptionContext> (options => options.UseSqlite(
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope()){
-    //This gives access to all the services you registered earlier, like DBContext
-    var services = scope.ServiceProvider;
+    // This gives you access to all the services you registered earlier, like DBContext
+    var services = scope.ServiceProvider; 
 
-    //This gets an instance of database context = talks to database
+    // This gets an instance of your database context = the thing that talks to your database
     var context = services.GetRequiredService<PetAdoptionContext>();
 
-    //This checks if database exists and if it does not, it creates it
+    // This checks if you database exists and if it does not, it creates it. 
     context.Database.Migrate();
 }
 
